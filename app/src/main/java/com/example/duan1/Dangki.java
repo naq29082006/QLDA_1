@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Dangki extends AppCompatActivity {
 
-    EditText edtUser,edtPass,edtPhone,edtName;
+    EditText edtEmail,edtPass,edtPhone,edtName;
     Button btnDangki;
     TextView tvDangnhap;
     private ApiServices api;
@@ -38,7 +38,7 @@ public class Dangki extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangki);
-        edtUser = findViewById(R.id.edtUser);
+        edtEmail = findViewById(R.id.edtEmail);
         edtPass = findViewById(R.id.edtPass);
         edtPhone = findViewById(R.id.edtPhone);
         edtName = findViewById(R.id.edtName);
@@ -58,7 +58,7 @@ public class Dangki extends AppCompatActivity {
         });
         btnDangki.setOnClickListener(v -> {
             Map<String, String> body = new HashMap<>();
-            body.put("username", edtUser.getText().toString().trim());
+            body.put("email", edtEmail.getText().toString().trim());
             body.put("password", edtPass.getText().toString().trim());
             body.put("name", edtName.getText().toString().trim());
             body.put("sdt", edtPhone.getText().toString().trim());
@@ -69,13 +69,13 @@ public class Dangki extends AppCompatActivity {
                             if (response.isSuccessful() && response.body() != null) {
                                 Toast.makeText(Dangki.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                                 Intent resultIntent = new Intent();
-                                resultIntent.putExtra("username", edtUser.getText().toString());
+                                resultIntent.putExtra("email", edtEmail.getText().toString());
                                 resultIntent.putExtra("password", edtPass.getText().toString());
                                 setResult(RESULT_OK, resultIntent);
                                 finish();
                             } else {
                                 Toast.makeText(Dangki.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
-                                Log.e("API", response.toString());
+                                Log.e("Lỗi", response.toString());
                             }
                         }
 

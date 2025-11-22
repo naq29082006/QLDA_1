@@ -18,6 +18,15 @@
         android:theme="@style/Theme.DUAN1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Manchinhnguoidung"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManchinhAdmin"
+            android:exported="false" />
+        <activity
             android:name=".Manchinh"
             android:exported="false" />
         <activity

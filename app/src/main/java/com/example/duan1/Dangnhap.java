@@ -32,10 +32,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Dangnhap extends AppCompatActivity {
-    EditText edtUser,edtPass;
+    EditText edtEmail,edtPass;
     Button btnLogin;
     TextView tvDangki;
     private ApiServices api;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class Dangnhap extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(ApiServices.class);
-        edtUser = findViewById(R.id.edtUser);
+        edtEmail = findViewById(R.id.edtEmail);
         edtPass = findViewById(R.id.edtPass);
         btnLogin = findViewById(R.id.btnLogin);
         tvDangki = findViewById(R.id.tvReg);
@@ -54,18 +55,23 @@ public class Dangnhap extends AppCompatActivity {
             Intent intent = new Intent(Dangnhap.this, Dangki.class);
             startActivityForResult(intent, 1);
         });
+        sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
+
+        // Load thông tin nếu có
+        loadUserInfo();
+
         btnLogin.setOnClickListener(v -> {
 
-            String username = edtUser.getText().toString().trim();
+            String email = edtEmail.getText().toString().trim();
             String password = edtPass.getText().toString().trim();
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             Map<String, String> body = new HashMap<>();
-            body.put("username", username);
+            body.put("email", email);
             body.put("password", password);
 
             api.login(body).enqueue(new Callback<Response<User>>() {
@@ -82,33 +88,34 @@ public class Dangnhap extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedPref.edit();
                             editor.putString("token", res.getToken());
                             editor.putString("refreshToken", res.getRefreshToken());
-                            editor.putString("username", user.getUser());
+                            editor.putString("email", user.getEmail());
+                            editor.putString("password", user.getPass()); // Lưu mật khẩu
                             editor.putString("sdt", user.getPhone());
                             editor.putString("name", user.getName());
                             editor.putString("id_taikhoan", user.getId());
                             editor.apply();
-
+                            saveUserInfo(email, password);
 
                             Toast.makeText(Dangnhap.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
 
                             // Chuyển sang màn hình chính
-                            Intent intent = new Intent(Dangnhap.this, Manchinh.class);
+                            Intent intent = new Intent(Dangnhap.this, ManchinhAdmin.class);
                             startActivity(intent);
                             finish(); // đóng màn hình login
                         } else {
                             Toast.makeText(Dangnhap.this, "Đăng nhập thất bại: " + res.getMessenger(), Toast.LENGTH_SHORT).show();
-                            Log.e("LOGIN_ERROR", response.toString());
+                            Log.e("Lỗi", response.toString());
                         }
                     } else {
                         String errorBody = response.errorBody() != null ? response.errorBody().toString() : "Không có thông tin lỗi";
-                        Log.e("LOGIN_ERROR", errorBody);
+                        Log.e("Lỗi", errorBody);
                         Toast.makeText(Dangnhap.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Response<User>> call, Throwable t) {
-                    Log.e("LOGIN_ERROR", "onFailure: ", t);
+                    Log.e("Lỗi",  t.toString());
                     Toast.makeText(Dangnhap.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
@@ -121,10 +128,23 @@ public class Dangnhap extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            String username = data.getStringExtra("username");
+            String username = data.getStringExtra("email");
             String password = data.getStringExtra("password");
-            edtUser.setText(username);
+            edtEmail.setText(username);
             edtPass.setText(password);
         }
+    }
+    private void saveUserInfo(String email, String password) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.apply();
+    }
+
+    private void loadUserInfo() {
+        String savedEmail = sharedPreferences.getString("email", "");
+        String savedPass = sharedPreferences.getString("password", "");
+        edtEmail.setText(savedEmail);
+        edtPass.setText(savedPass);
     }
 }

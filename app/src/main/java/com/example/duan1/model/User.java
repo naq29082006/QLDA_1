@@ -7,77 +7,78 @@ public class User {
     private String id;
     private String name;
     private String phone;
-    private String user;
+    private String email;
     private String pass;
-    private String createdAt;
-    private String updatedAt;
 
     public User() {
     }
 
-    public User(String id, String name, String phone, String user, String pass, String createdAt, String updatedAt) {
+    public User(String id, String name, String phone, String email, String pass, String createdAt, String updatedAt) {
         this.id = id;
         this.name = name;
         this.phone = phone;
-        this.user = user;
+        this.email = email;
         this.pass = pass;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    private String createdAt;
+    private String updatedAt;
+
+    public String getId() {
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getId() {
-        return id;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public String getEmail() {
+        return email;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPass() {
         return pass;
     }
 
-    public String getUser() {
-        return user;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public String getName() {
-        return name;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
