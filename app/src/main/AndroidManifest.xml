@@ -18,6 +18,9 @@
         android:theme="@style/Theme.DUAN1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Welecom"
+            android:exported="false" />
+        <activity
             android:name=".Manchinhnguoidung"
             android:exported="false" />
         <activity
@@ -36,7 +39,7 @@
             android:name=".Dangki"
             android:exported="false" />
         <activity
-            android:name=".Welecom"
+            android:name=".StatisticsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

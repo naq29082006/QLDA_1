@@ -3,10 +3,12 @@ package com.example.duan1.services;
 
 
 
+import com.example.duan1.Top5Response;
 import com.example.duan1.model.Response;
 import com.example.duan1.model.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -31,5 +33,10 @@ public interface ApiServices {
     Call<Response<User>> register(@Body Map<String, String> body);
     @POST("api/login")
     Call<Response<User>> login(@Body Map<String, String> body);
+    @GET("top5orders")
+    Call<List<Top5Response.TopOrder>> getTop5Orders();
+
+    @GET("report")
+    Call<Top5Response.ReportResponse> getReport();
 
 }

@@ -35,7 +35,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         this.context = context;
         this.customerList = customerList;
 
-        // copy list để filter không bị mất dữ liệu
+
         this.customerListFull = new ArrayList<>(customerList);
     }
 
@@ -62,7 +62,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     }
 
 
-    // ---------------- FILTER LIST ---------------------
+
     public void filterList(String text) {
         customerList.clear();
 
@@ -81,7 +81,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     }
 
 
-    // ---------------- VIEW HOLDER ---------------------
+
     public class CustomerViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvName, tvEmail, tvPhone, tvAddress;

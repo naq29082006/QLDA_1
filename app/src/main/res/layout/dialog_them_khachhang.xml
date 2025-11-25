@@ -34,6 +34,15 @@
         android:textColorHint="#8A8A8A"
         android:layout_marginTop="12dp"/>
     <EditText
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:id="@+id/edtEmail"
+    android:padding="10dp"
+    android:hint="Email"
+    android:textColor="#000"
+    android:textColorHint="#8A8A8A"
+    android:layout_marginTop="12dp"/>
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:id="@+id/edtDiachi"
