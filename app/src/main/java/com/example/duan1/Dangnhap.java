@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.duan1.model.Response;
 import com.example.duan1.model.User;
 import com.example.duan1.services.ApiServices;
+import com.example.duan1.utils.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +29,6 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Dangnhap extends AppCompatActivity {
     EditText edtEmail,edtPass;
@@ -42,11 +41,7 @@ public class Dangnhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangnhap);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiServices.Url) // nhớ "/" cuối
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        api = retrofit.create(ApiServices.class);
+        api = RetrofitClient.getInstance().getApiServices();
         edtEmail = findViewById(R.id.edtEmail);
         edtPass = findViewById(R.id.edtPass);
         btnLogin = findViewById(R.id.btnLogin);
