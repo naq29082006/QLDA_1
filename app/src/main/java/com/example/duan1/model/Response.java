@@ -3,9 +3,11 @@ package com.example.duan1.model;
 public class Response<T> {
     private int status;
     private String messenger;
+    private boolean success;
+    private String message;
     private T data;
-    private  String token;
-    private  String refreshToken;
+    private String token;
+    private String refreshToken;
 
 
     public String getToken() {
@@ -58,5 +60,21 @@ public class Response<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message != null ? message : messenger;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
