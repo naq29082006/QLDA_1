@@ -17,16 +17,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.duan1.model.Response;
 import com.example.duan1.model.User;
 import com.example.duan1.services.ApiServices;
+import com.example.duan1.utils.RetrofitClient;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Dangki extends AppCompatActivity {
     EditText edtEmail,edtPass,edtPhone,edtName;
@@ -44,11 +41,7 @@ public class Dangki extends AppCompatActivity {
         btnDangki = findViewById(R.id.btnDangki);
         tvDangnhap = findViewById(R.id.tvLogin);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiServices.Url) // nhớ "/" cuối
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        api = retrofit.create(ApiServices.class);
+        api = RetrofitClient.getInstance().getApiServices();
 
         tvDangnhap.setOnClickListener(v -> {
             Intent intent = new Intent(Dangki.this, Dangnhap.class);

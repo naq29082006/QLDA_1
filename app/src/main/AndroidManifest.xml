@@ -18,28 +18,25 @@
         android:theme="@style/Theme.DUAN1"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui_admin.QuanLySanPham"
-            android:exported="false" />
-        <activity
-            android:name=".ui_admin.QuanLyDanhMuc"
-            android:exported="false" />
-        <activity
-            android:name=".Manchinhnguoidung"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ManchinhAdmin"
-            android:exported="false" />
-        <activity
-            android:name=".Manchinh"
             android:exported="false" />
         <activity
             android:name=".Dangnhap"
             android:exported="false" />
         <activity
             android:name=".Dangki"
+            android:exported="false" />
+        <activity
+            android:name=".TrangChu"
+            android:exported="false" />
+        <activity
+            android:name=".XemSanPham"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLyDonHang"
+            android:exported="false" />
+        <activity
+            android:name=".ThongKeBaoHanh"
             android:exported="false" />
         <activity
             android:name=".Welecom"
