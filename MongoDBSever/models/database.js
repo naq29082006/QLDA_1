@@ -6,9 +6,10 @@ const Schema = mongoose.Schema;
 ========================== */
 const UserSchema = new Schema({
   name: { type: String, required: true },
-  sdt: { type: String },
+  phone: { type: String },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  role: { type: String, enum: ['admin', 'user'], default: 'user' },
 }, { timestamps: true });
 
 const Users = mongoose.model("users", UserSchema);
@@ -52,6 +53,7 @@ const CartItems = mongoose.model("cart_items", CartItemSchema);
    ORDERS
 ========================== */
 const OrderSchema = new Schema({
+  order_id: { type: String, unique: true },
   user_id: { type: Schema.Types.ObjectId, ref: "users", required: true },
   total_price: { type: Number, required: true },
   status: { type: String, default: "pending" },
@@ -59,6 +61,10 @@ const OrderSchema = new Schema({
   receiver_name: { type: String, required: true },
   receiver_address: { type: String, required: true },
   receiver_phone: { type: String, required: true },
+  voucher_code: { type: String }, // Mã voucher đã áp dụng
+  discount_amount: { type: Number, default: 0 }, // Số tiền giảm giá
+  voucher_title: { type: String }, // Tiêu đề voucher
+  cancel_reason: { type: String }, // Lý do hủy đơn hàng (khi admin hủy)
 }, { timestamps: true });
 
 const Orders = mongoose.model("orders", OrderSchema);
@@ -89,6 +95,21 @@ const ReviewSchema = new Schema({
 const Reviews = mongoose.model("reviews", ReviewSchema);
 
 /* ==========================
+   VOUCHERS
+========================== */
+const VoucherSchema = new Schema({
+  voucher_code: { type: String, required: true, unique: true, uppercase: true },
+  title: { type: String, required: true }, // Tiêu đề voucher (ví dụ: "Mừng ngày 12/12")
+  discount_percentage: { type: Number, required: true, min: 0, max: 100 }, // % giảm giá
+  max_discount_amount: { type: Number, default: 0, min: 0 }, // Số tiền giảm tối đa (VND)
+  start_date: { type: Date, required: true }, // Ngày bắt đầu
+  end_date: { type: Date, required: true }, // Ngày kết thúc
+  is_active: { type: Boolean, default: true } // Trạng thái hoạt động
+}, { timestamps: true });
+
+const Vouchers = mongoose.model("vouchers", VoucherSchema);
+
+/* ==========================
    EXPORT
 ========================== */
 module.exports = {
@@ -98,5 +119,6 @@ module.exports = {
   CartItems,
   Orders,
   OrderDetails,
-  Reviews
+  Reviews,
+  Vouchers
 };

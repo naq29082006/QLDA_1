@@ -5,155 +5,83 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B5CBF3"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    tools:context=".ManchinhAdmin">
+    android:background="#B5CBF3"
+    tools:context=".ui_admin.ManchinhAdmin">
 
-    <androidx.cardview.widget.CardView
+    <!-- Container cho fragment / nội dung tab -->
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        android:backgroundTint="#FFFFFF">
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
 
+        <!-- Trang chủ -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/navTrangChu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp">
 
-            <!-- Tiêu đề -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home"
+                android:tint="#666666" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trang Admin"
-                android:textSize="32sp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Text chào hỏi -->
-            <TextView
-                android:id="@+id/tvTenKhachHang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Xin chào, Khách hàng"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:layout_marginBottom="24dp" />
-
-            <!-- Hàng trên: Xem sản phẩm và Giỏ hàng -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <Button
-                    android:id="@+id/btnXemSanPham"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="Xem sản phẩm"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:backgroundTint="#E0E0E0"
-                    android:elevation="2dp" />
-
-                <Button
-                    android:id="@+id/btnGioHang"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:text="Giỏ hàng"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:backgroundTint="#E0E0E0"
-                    android:elevation="2dp" />
-
-            </LinearLayout>
-
-            <!-- Hàng giữa: Lịch sử đơn hàng và Đặt hàng -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <Button
-                    android:id="@+id/btnLichSuDonHang"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="Lịch sử đơn hàng"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:backgroundTint="#E0E0E0"
-                    android:elevation="2dp" />
-
-                <Button
-                    android:id="@+id/btnDatHang"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:text="Đặt hàng"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:backgroundTint="#E0E0E0"
-                    android:elevation="2dp" />
-
-            </LinearLayout>
-
-            <!-- Hàng dưới: Tài khoản -->
-            <Button
-                android:id="@+id/btnTaiKhoan"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="8dp"
-                android:text="Tài khoản"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:backgroundTint="#E0E0E0"
-                android:elevation="2dp" />
-
-            <!-- Text mô tả -->
-            <TextView
-                android:id="@+id/tvSuaThongTin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sửa thông tin tài khoản"
-                android:textSize="14sp"
+                android:text="Quản lý"
+                android:textSize="12sp"
                 android:textColor="#666666"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp"
-                android:layout_marginBottom="24dp" />
-
-            <!-- Nút Login -->
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Login"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:backgroundTint="#B5CBF3"
-                android:elevation="4dp" />
-
+                android:layout_marginTop="4dp" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+
+        <!-- Tài khoản -->
+        <LinearLayout
+            android:id="@+id/navTaiKhoan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_person"
+                android:tint="#666666" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tài khoản"
+                android:textSize="12sp"
+                android:textColor="#666666"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

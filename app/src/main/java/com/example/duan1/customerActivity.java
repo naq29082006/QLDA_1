@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,13 +29,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class customerActivity extends AppCompatActivity {
-
     private RecyclerView recyclerView;
     private CustomerAdapter adapter;
     private List<Customer> customerList;
     private EditText edtSearch;
     private FloatingActionButton fabAdd;
-
+    private ImageView imgBack;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +43,15 @@ public class customerActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.Rvcustomer);
         edtSearch = findViewById(R.id.edtSearch);
         fabAdd = findViewById(R.id.fabAdd);
-
-        // Khởi tạo danh sách khách hàng demo
+        imgBack = findViewById(R.id.imgBack);
+        imgBack.setOnClickListener(v -> finish());
         customerList = new ArrayList<>();
         customerList.add(new Customer("Nguyen Van A", "a@gmail.com", "0123456789", "Hanoi"));
         customerList.add(new Customer("Tran Thi B", "b@gmail.com", "0987654321", "HCM"));
         customerList.add(new Customer("Le Van C", "c@gmail.com", "0912345678", "Danang"));
-
-        // Adapter và RecyclerView
         adapter = new CustomerAdapter(this, customerList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
         // Search
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,6 +92,11 @@ public class customerActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_them_khachhang);
+        
+        // Set width cho dialog
+        android.view.WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
+        dialog.getWindow().setAttributes(params);
 
         EditText edtName = dialog.findViewById(R.id.edtTEnKH);
         EditText edtPhone = dialog.findViewById(R.id.edtPhone);
@@ -127,6 +129,11 @@ public class customerActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_them_khachhang);
+        
+        // Set width cho dialog
+        android.view.WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
+        dialog.getWindow().setAttributes(params);
 
         EditText edtName = dialog.findViewById(R.id.edtTEnKH);
         EditText edtPhone = dialog.findViewById(R.id.edtPhone);

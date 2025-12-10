@@ -1,0 +1,20 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Hình chữ nhật với các đường cắt (coupon) -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M20,4H4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V6c0,-1.1 -0.9,-2 -2,-2zM4,6h16v2.5c-0.8,0 -1.5,0.7 -1.5,1.5s0.7,1.5 1.5,1.5V12c-0.8,0 -1.5,0.7 -1.5,1.5s0.7,1.5 1.5,1.5V18H4v-2.5c0.8,0 1.5,-0.7 1.5,-1.5S4.8,12.5 4,12.5V9.5c0.8,0 1.5,-0.7 1.5,-1.5S4.8,6.5 4,6.5V6z"/>
+    <!-- Dấu % giảm giá - vẽ bằng path -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M9,7.5c-0.8,0 -1.5,0.7 -1.5,1.5s0.7,1.5 1.5,1.5s1.5,-0.7 1.5,-1.5S9.8,7.5 9,7.5zM9,9.5c-0.3,0 -0.5,0.2 -0.5,0.5s0.2,0.5 0.5,0.5s0.5,-0.2 0.5,-0.5S9.3,9.5 9,9.5z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M15,13.5c-0.8,0 -1.5,0.7 -1.5,1.5s0.7,1.5 1.5,1.5s1.5,-0.7 1.5,-1.5S15.8,13.5 15,13.5zM15,15.5c-0.3,0 -0.5,0.2 -0.5,0.5s0.2,0.5 0.5,0.5s0.5,-0.2 0.5,-0.5S15.3,15.5 15,15.5z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M10.5,7.5l3,3M13.5,7.5l-3,3"/>
+</vector>
