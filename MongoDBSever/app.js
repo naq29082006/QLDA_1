@@ -33,7 +33,10 @@ app.use('/api', api);
 
 // ==================== XỬ LÝ 404 ====================
 app.use(function (req, res, next) {
-  res.status(404).json({ message: 'Không tìm thấy API hoặc trang yêu cầu' });
+  res.status(404).json({
+    success: false,
+    message: 'Không tìm thấy API hoặc trang yêu cầu'
+  });
 });
 
 // ==================== XỬ LÝ ERROR ====================
@@ -41,8 +44,9 @@ app.use(function (err, req, res, next) {
   console.error("🔥 Lỗi server:", err.message);
 
   res.status(err.status || 500).json({
+    success: false,
     message: err.message || "Lỗi server",
-    error: req.app.get('env') === 'development' ? err : {}
+    error: req.app.get('env') === 'development' ? err.message : undefined
   });
 });
 

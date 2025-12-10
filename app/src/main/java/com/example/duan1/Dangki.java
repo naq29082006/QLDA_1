@@ -53,7 +53,7 @@ public class Dangki extends AppCompatActivity {
             body.put("email", edtEmail.getText().toString().trim());
             body.put("password", edtPass.getText().toString().trim());
             body.put("name", edtName.getText().toString().trim());
-            body.put("sdt", edtPhone.getText().toString().trim());
+            body.put("phone", edtPhone.getText().toString().trim());
             api.register(body)
                     .enqueue(new Callback<Response<User>>() {
                         @Override

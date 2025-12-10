@@ -18,7 +18,10 @@
         android:theme="@style/Theme.DUAN1"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ManchinhAdmin"
+            android:name=".ui_admin.TrangChuFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui_admin.ManchinhAdmin"
             android:exported="false" />
         <activity
             android:name=".Dangnhap"
@@ -27,16 +30,37 @@
             android:name=".Dangki"
             android:exported="false" />
         <activity
-            android:name=".TrangChu"
-            android:exported="false" />
-        <activity
-            android:name=".XemSanPham"
+            android:name=".ui_user.ManchinhUser"
             android:exported="false" />
         <activity
             android:name=".QuanLyDonHang"
             android:exported="false" />
         <activity
+            android:name=".QuanLyDonHangAdmin"
+            android:exported="false" />
+        <activity
             android:name=".ThongKeBaoHanh"
+            android:exported="false" />
+        <activity
+            android:name=".ui_admin.QuanLyDanhMuc"
+            android:exported="false" />
+        <activity
+            android:name=".ui_admin.QuanLySanPham"
+            android:exported="false" />
+        <activity
+            android:name=".ui_admin.QuanLyKhachHang"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLyDanhGia"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLyVoucher"
+            android:exported="false" />
+        <activity
+            android:name=".BaoCaoAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".customerActivity"
             android:exported="false" />
         <activity
             android:name=".Welecom"

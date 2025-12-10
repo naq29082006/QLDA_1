@@ -39,19 +39,19 @@ const seedData = async () => {
             name: 'Nguyễn Văn A',
             email: 'admin@example.com',
             password: '123456',
-            sdt: '0123456789'
+            phone: '0123456789'
         });
         const user2 = await Users.create({
             name: 'Trần Thị B',
             email: 'user@example.com',
             password: '123456',
-            sdt: '0987654321'
+            phone: '0987654321'
         });
         const user3 = await Users.create({
             name: 'Lê Văn C',
             email: 'customer@example.com',
             password: '123456',
-            sdt: '0912345678'
+            phone: '0912345678'
         });
         console.log(`✅ Đã thêm ${await Users.countDocuments()} users\n`);
 

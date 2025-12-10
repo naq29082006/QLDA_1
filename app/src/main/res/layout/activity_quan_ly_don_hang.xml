@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B5CBF3"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    tools:context=".QuanLyDonHang">
+    android:padding="16dp">
 
+    <!-- White Card Container -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,94 +21,39 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Header: Title và Icon -->
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <!-- Header: Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp">
-
-                <!-- Tiêu đề -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Quản lý Đơn hàng"
-                    android:textSize="28sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true" />
-
-                <!-- Icon đỏ với mũi tên -->
-                <FrameLayout
-                    android:id="@+id/imgIcon"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/ic_dropdown_red"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="4dp">
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_arrow_down_white" />
-                </FrameLayout>
-
-            </RelativeLayout>
-
-            <!-- Column Headers -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:background="#F5F5F5"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Mã Đơn"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Trạng thái"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Thao tác"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:gravity="end" />
-
-            </LinearLayout>
+                android:text="Quản lý đơn hàng"
+                android:textSize="28sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
 
             <!-- RecyclerView for Orders -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvOrders"
+                android:id="@+id/rvDonHang"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:clipToPadding="false"
                 android:paddingBottom="8dp" />
 
+            <!-- Empty State -->
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Chưa có đơn hàng nào"
+                android:textSize="18sp"
+                android:textColor="#999999"
+                android:gravity="center"
+                android:visibility="gone" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>
-

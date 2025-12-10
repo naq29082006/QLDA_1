@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:maxHeight="600dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="#FFFFFF">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết Khách hàng"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Tên khách hàng -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên khách hàng:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvChiTietTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tên khách hàng"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:minHeight="48dp"
+            android:gravity="center_vertical" />
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvChiTietEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:minHeight="48dp"
+            android:gravity="center_vertical" />
+
+        <!-- Số điện thoại -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvChiTietPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:minHeight="48dp"
+            android:gravity="center_vertical" />
+
+        <!-- Vai trò -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vai trò:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvChiTietRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vai trò"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:minHeight="48dp"
+            android:gravity="center_vertical" />
+
+        <!-- ID -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvChiTietId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID khách hàng"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:background="#F5F5F5"
+            android:minHeight="40dp"
+            android:gravity="center_vertical" />
+
+        <!-- Button Đóng -->
+        <Button
+            android:id="@+id/btnDong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đóng"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#B5CBF3"
+            android:padding="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>
+

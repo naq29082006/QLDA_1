@@ -85,6 +85,20 @@
                     android:backgroundTint="#B5CBF3"
                     android:layout_marginBottom="16dp"/>
 
+                <!-- FORGOT PASSWORD LINK -->
+                <TextView
+                    android:id="@+id/tvForgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quên mật khẩu?"
+                    android:textColor="#B5CBF3"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
                 <!-- REGISTER LINK -->
                 <TextView
                     android:id="@+id/tvReg"

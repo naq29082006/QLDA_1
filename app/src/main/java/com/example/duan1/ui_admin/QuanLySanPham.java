@@ -51,7 +51,7 @@ import retrofit2.Callback;
 public class QuanLySanPham extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-
+    
     private RecyclerView rvSanPham;
     private SanPhamAdapter adapter;
     private List<Product> sanPhamList;
@@ -77,7 +77,7 @@ public class QuanLySanPham extends AppCompatActivity {
         edtSearchSanPham = findViewById(R.id.edtSearchSanPham);
         fabAddSanPham = findViewById(R.id.fabAddSanPham);
         imgBack = findViewById(R.id.imgBack);
-
+        
         // Xử lý nút back
         imgBack.setOnClickListener(v -> finish());
 
@@ -145,7 +145,7 @@ public class QuanLySanPham extends AppCompatActivity {
                 List<Product> currentList = adapter.getProductList();
                 if (position >= 0 && position < currentList.size()) {
                     Product product = currentList.get(position);
-                    deleteProduct(product.getId());
+                                deleteProduct(product.getId());
                 }
             }
         });
@@ -223,7 +223,7 @@ public class QuanLySanPham extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_them_san_pham);
         currentDialog = dialog;
-
+        
         // Set width cho dialog
         android.view.WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
         params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
@@ -238,7 +238,7 @@ public class QuanLySanPham extends AppCompatActivity {
         EditText edtPrice = dialog.findViewById(R.id.edtGia);
         Button btnAdd = dialog.findViewById(R.id.btnThem);
         Button btnCancel = dialog.findViewById(R.id.btnHuy);
-
+        
         selectedImageUri = null;
 
         // Setup spinner danh mục với text color đen
@@ -279,6 +279,7 @@ public class QuanLySanPham extends AppCompatActivity {
             String name = edtName.getText().toString().trim();
             String description = edtDescription.getText().toString().trim();
             String priceStr = edtPrice.getText().toString().trim();
+            String price = edtPrice.getText().toString().trim();
             int selectedPosition = spinnerDanhMuc.getSelectedItemPosition();
 
             if (name.isEmpty() || priceStr.isEmpty()) {
@@ -292,10 +293,9 @@ public class QuanLySanPham extends AppCompatActivity {
             }
 
             try {
-                double price = Double.parseDouble(priceStr);
                 // selectedPosition - 1 vì index 0 là "Chọn danh mục"
                 String categoryId = danhMucList.get(selectedPosition - 1).getId();
-                createProduct(name, description, price, categoryId, dialog);
+                createProduct(name, description, Double.parseDouble(price), categoryId, dialog);
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "Giá không hợp lệ", Toast.LENGTH_SHORT).show();
             }
@@ -304,13 +304,13 @@ public class QuanLySanPham extends AppCompatActivity {
         btnCancel.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
-
+    
     private void showEditSanPhamDialog(Product product, int position) {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_them_san_pham);
         currentDialog = dialog;
-
+        
         // Set width cho dialog
         android.view.WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
         params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
@@ -325,12 +325,12 @@ public class QuanLySanPham extends AppCompatActivity {
         EditText edtPrice = dialog.findViewById(R.id.edtGia);
         Button btnAdd = dialog.findViewById(R.id.btnThem);
         Button btnCancel = dialog.findViewById(R.id.btnHuy);
-
+        
         edtName.setText(product.getName());
         edtDescription.setText(product.getDescription() != null ? product.getDescription() : "");
         edtPrice.setText(String.valueOf((long)product.getPrice()));
         btnAdd.setText("Cập nhật");
-
+        
         // Setup spinner danh mục với text color đen
         List<String> categoryNames = new ArrayList<>();
         int selectedCategoryIndex = 0;
@@ -363,7 +363,7 @@ public class QuanLySanPham extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDanhMuc.setAdapter(spinnerAdapter);
         spinnerDanhMuc.setSelection(selectedCategoryIndex);
-
+        
         // Load ảnh nếu có
         if (product.getImage() != null && !product.getImage().isEmpty()) {
             String imageUrl = product.getImage();
@@ -372,7 +372,7 @@ public class QuanLySanPham extends AppCompatActivity {
             }
             Glide.with(this).load(imageUrl).into(imgProductPreview);
         }
-
+        
         selectedImageUri = null;
 
         btnChooseImage.setOnClickListener(v -> {
@@ -383,18 +383,17 @@ public class QuanLySanPham extends AppCompatActivity {
         btnAdd.setOnClickListener(v -> {
             String name = edtName.getText().toString().trim();
             String description = edtDescription.getText().toString().trim();
-            String priceStr = edtPrice.getText().toString().trim();
+            String price = edtPrice.getText().toString().trim();
             int selectedPosition = spinnerDanhMuc.getSelectedItemPosition();
 
-            if (name.isEmpty() || priceStr.isEmpty()) {
+            if (name.isEmpty() || price.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             try {
-                double price = Double.parseDouble(priceStr);
                 String categoryId = danhMucList.get(selectedPosition).getId();
-                updateProduct(product.getId(), name, description, price, categoryId, position, dialog);
+                updateProduct(product.getId(), name, description, Double.parseDouble(price), categoryId, position, dialog);
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "Giá không hợp lệ", Toast.LENGTH_SHORT).show();
             }
@@ -410,7 +409,7 @@ public class QuanLySanPham extends AppCompatActivity {
         RequestBody descriptionBody = RequestBody.create(MediaType.parse("text/plain"), description != null ? description : "");
         RequestBody priceBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(price));
         RequestBody categoryIdBody = RequestBody.create(MediaType.parse("text/plain"), categoryId);
-
+        
         // Tạo MultipartBody.Part cho ảnh (nếu có)
         MultipartBody.Part imagePart;
         if (selectedImageUri != null) {
@@ -468,7 +467,7 @@ public class QuanLySanPham extends AppCompatActivity {
         RequestBody descriptionBody = RequestBody.create(MediaType.parse("text/plain"), description != null ? description : "");
         RequestBody priceBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(price));
         RequestBody categoryIdBody = RequestBody.create(MediaType.parse("text/plain"), categoryId);
-
+        
         // Tạo MultipartBody.Part cho ảnh (nếu có ảnh mới)
         MultipartBody.Part imagePart;
         if (selectedImageUri != null) {
@@ -546,7 +545,7 @@ public class QuanLySanPham extends AppCompatActivity {
             }
         });
     }
-
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -567,7 +566,7 @@ public class QuanLySanPham extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_chi_tiet_san_pham);
-
+        
         // Set width cho dialog
         android.view.WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
         params.width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
@@ -593,7 +592,7 @@ public class QuanLySanPham extends AppCompatActivity {
         }
 
         tvTen.setText(product.getName() != null ? product.getName() : "Chưa có tên");
-        tvMoTa.setText(product.getDescription() != null && !product.getDescription().isEmpty()
+        tvMoTa.setText(product.getDescription() != null && !product.getDescription().isEmpty() 
                 ? product.getDescription() : "Chưa có mô tả");
         tvGia.setText(product.getFormattedPrice() != null ? product.getFormattedPrice() : "0đ");
         tvId.setText(product.getId() != null ? product.getId() : "Chưa có ID");
